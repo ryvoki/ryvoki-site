@@ -27,6 +27,7 @@ public sealed class ComposeForm : Form
         _settings = settings;
         _api = api;
         Theme.Style(this);
+        Icon = Brand.AppIcon;
         Text = mode switch { ComposeMode.Reply => "Reply", ComposeMode.ReplyAll => "Reply all", ComposeMode.Forward => "Forward", _ => "New message" } + " — Ryvoki Mail";
         ClientSize = new Size(780, 640);
         MinimumSize = new Size(620, 480);

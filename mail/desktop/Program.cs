@@ -40,6 +40,32 @@ internal static class Program
         var settings = Settings.Load();
         if (!settings.IsConfigured)
         {
+            // Convenience: pick up mail-token.txt from the usual places so the first run needs no typing.
+            foreach (var candidate in new[]
+            {
+                Path.Combine(AppContext.BaseDirectory, "mail-token.txt"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "mail-token.txt"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "ryvoki-site", "mail-token.txt"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Desktop", "ryvoki-site", "mail-token.txt"),
+            })
+            {
+                try
+                {
+                    if (!File.Exists(candidate)) continue;
+                    var token = File.ReadAllText(candidate).Trim();
+                    if (token.Length < 16) continue;
+                    settings.Token = token;
+                    settings.Save();
+                    break;
+                }
+                catch
+                {
+                    // try the next location
+                }
+            }
+        }
+        if (!settings.IsConfigured)
+        {
             using var setup = new SetupForm(settings);
             if (setup.ShowDialog() != DialogResult.OK)
             {

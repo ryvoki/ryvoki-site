@@ -39,6 +39,7 @@ public sealed class MainForm : Form
         _snapshotPath = snapshotPath;
         _api = new MailApi(settings.ServerUrl, settings.Token);
         Theme.Style(this);
+        Icon = Brand.AppIcon;
         Text = "Ryvoki Mail";
         ClientSize = new Size(settings.WindowWidth, settings.WindowHeight);
         MinimumSize = new Size(940, 600);
@@ -47,7 +48,8 @@ public sealed class MainForm : Form
 
         // ---- toolbar ----
         var toolbar = new Panel { Dock = DockStyle.Top, Height = 56, BackColor = Theme.Surface };
-        var brand = new Label { Text = "RYVOKI  /  MAIL", Location = new Point(18, 18), AutoSize = true, Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold) };
+        toolbar.Controls.Add(Brand.MarkBox(18, 15));
+        var brand = new Label { Text = "RYVOKI  /  MAIL", Location = new Point(52, 18), AutoSize = true, Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold) };
         toolbar.Controls.Add(brand);
         var compose = Theme.Button("Compose", primary: true, width: 104, height: 32);
         compose.Location = new Point(190, 12);
@@ -143,7 +145,7 @@ public sealed class MainForm : Form
         // ---- polling + tray ----
         _poll = new System.Windows.Forms.Timer { Interval = Math.Max(20, settings.PollSeconds) * 1000 };
         _poll.Tick += async (_, _) => await PollAsync();
-        _tray = new NotifyIcon { Text = "Ryvoki Mail", Icon = SystemIcons.Application, Visible = true };
+        _tray = new NotifyIcon { Text = "Ryvoki Mail", Icon = Brand.AppIcon, Visible = true };
         _tray.DoubleClick += (_, _) => { Show(); WindowState = FormWindowState.Normal; Activate(); };
         _tray.BalloonTipClicked += (_, _) => { Show(); WindowState = FormWindowState.Normal; Activate(); };
 

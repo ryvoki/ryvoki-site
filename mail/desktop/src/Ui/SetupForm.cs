@@ -17,16 +17,18 @@ public sealed class SetupForm : Form
     {
         _settings = settings;
         Theme.Style(this);
+        Icon = Brand.AppIcon;
         Text = "Ryvoki Mail — connect";
-        ClientSize = new Size(440, 330);
+        ClientSize = new Size(440, 350);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox = false;
         MinimizeBox = false;
         StartPosition = FormStartPosition.CenterScreen;
 
         var header = new Panel { Dock = DockStyle.Top, Height = 58, BackColor = Theme.Surface };
-        header.Controls.Add(new Label { Text = "RYVOKI  /  MAIL", Location = new Point(18, 11), AutoSize = true, Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold) });
-        header.Controls.Add(new Label { Text = "Connect to your mail server", Location = new Point(18, 32), AutoSize = true, ForeColor = Theme.Muted, Font = Theme.Small });
+        header.Controls.Add(Brand.MarkBox(18, 16));
+        header.Controls.Add(new Label { Text = "RYVOKI  /  MAIL", Location = new Point(52, 11), AutoSize = true, Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold) });
+        header.Controls.Add(new Label { Text = "Connect to your mail server", Location = new Point(52, 32), AutoSize = true, ForeColor = Theme.Muted, Font = Theme.Small });
         Controls.Add(header);
         Controls.Add(Theme.Line(DockStyle.Top));
 
@@ -47,7 +49,10 @@ public sealed class SetupForm : Form
         Controls.Add(_connect);
         AcceptButton = _connect;
 
-        _status = new Label { Location = new Point(18, y + 44), Size = new Size(404, 40), ForeColor = Theme.Muted, Font = Theme.Small, Text = "The token is stored encrypted for your Windows account only." };
+        var why = settings.IsConfigured
+            ? "The token is stored encrypted for your Windows account only."
+            : $"Why you see this: {(Settings.LoadError == "" ? "settings file has no token" : Settings.LoadError)}\nLooked in: {Settings.Location}\nRunning as: {Environment.UserName}";
+        _status = new Label { Location = new Point(18, y + 44), Size = new Size(404, 60), ForeColor = Theme.Muted, Font = Theme.Small, Text = why };
         Controls.Add(_status);
     }
 
