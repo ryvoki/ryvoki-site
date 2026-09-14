@@ -35,6 +35,9 @@ It uploads the app token from `mail-token.txt` and asks for the Resend key.
 Build once: `dotnet publish mail/desktop/RyvokiMail.csproj -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o mail/desktop/dist`
 Run `mail\desktop\dist\Ryvoki Mail.exe`. First start asks for the server (`https://mail-api.ryvoki.com`) and the token from `mail-token.txt`. The token is stored encrypted for your Windows account.
 
+## Contact form
+The website's `/contact` page posts to `functions/api/contact.ts` on the Pages project, which writes the message into the same database and KV store (the Pages project has the `BLOBS` binding too). Submissions show up in the app's inbox as `[Contact] ...` from the visitor, and **Reply** goes to the email they typed. Spam defence: a hidden honeypot field, a 3-second minimum fill time, and 5 messages per hour per IP.
+
 ## Everyday use
 - Folders: Inbox, Starred, Sent, Archive, Trash. Delete moves to Trash; Delete again in Trash removes it for good.
 - Compose (Ctrl+N), Reply (Ctrl+R), Reply all, Forward with attachments, Search (Ctrl+F), Refresh (F5).
