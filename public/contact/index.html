@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css?v=mu13x5um">
+  <title>Contact — Ryvoki</title>
+  <meta name="description" content="Get in touch with Ryvoki: business, sponsorships, bug reports, or just to say hi.">
+</head>
+<body>
+  <div class="bg"><div class="orb"></div></div>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Ryvoki home"><img class="brand-mark" src="/assets/img/brand/mark.png" alt="Ryvoki"></a>
+      <nav class="nav-links">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/projects/" data-nav="projects">Projects</a>
+        <a href="/license/" data-nav="license">License</a>
+        <a href="/contact/" data-nav="contact">Contact</a>
+        <a class="btn btn-sm btn-primary" href="#" data-nav-discord target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </header>
+  <script>document.querySelector('[data-nav="contact"]').setAttribute("aria-current","page")</script>
+  <main class="wrap">
+    <div class="narrow">
+      <span class="eyebrow">Contact</span>
+      <h2 style="margin:10px 0 8px">Get in touch.</h2>
+      <p class="muted" style="margin-bottom:22px">Business, sponsorships, bug reports, or you just want to say hi. Email is best for anything official; Discord is fastest.</p>
+
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:22px">
+        <div class="card card-pad">
+          <span class="eyebrow">Email</span>
+          <div class="kv-row" style="margin-top:12px"><span class="v" style="font-size:15px"><a href="mailto:business@ryvoki.com">business@ryvoki.com</a></span><button class="copy" data-copy-email="business@ryvoki.com">COPY</button></div>
+        </div>
+        <div class="card card-pad">
+          <span class="eyebrow">Discord</span>
+          <p class="muted" style="margin:12px 0 12px;font-size:14px">Quick questions, key problems, and hanging out.</p>
+          <a class="btn btn-sm btn-primary" data-discord-link>Join the Discord</a>
+        </div>
+      </div>
+
+      <form class="card card-pad" data-contact-form autocomplete="on">
+        <span class="eyebrow">Or send it from here</span>
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+          <div class="field"><label for="c-name">NAME</label><input class="input" id="c-name" required maxlength="120" autocomplete="name"></div>
+          <div class="field"><label for="c-email">YOUR EMAIL</label><input class="input" id="c-email" type="email" required maxlength="200" autocomplete="email"></div>
+        </div>
+        <div class="field" style="margin-top:12px"><label for="c-subject">SUBJECT</label><input class="input" id="c-subject" maxlength="200" placeholder="What's it about?"></div>
+        <div class="field" style="margin-top:12px"><label for="c-message">MESSAGE</label><textarea class="input" id="c-message" required minlength="5" maxlength="8000" rows="7" style="resize:vertical"></textarea></div>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website<input id="c-website" tabindex="-1" autocomplete="off"></label></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap">
+          <button class="btn btn-primary" type="submit" data-contact-send>Send message</button>
+          <span class="muted" style="font-size:13px">Lands straight in my inbox. I reply to the email you enter.</span>
+        </div>
+        <div data-contact-out style="margin-top:12px"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-brand"><img src="/assets/img/brand/mark.png" alt=""><span>© <span data-year></span> Ryvoki · <span data-footer-note></span></span></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="muted" style="margin-right:4px">Pay with</span><span data-crypto style="display:contents"></span></div>
+    </div>
+  </footer>
+  <script>document.querySelector("[data-year]").textContent=new Date().getFullYear();</script>
+  <script src="/assets/js/site.js?v=mu13x5um"></script>
+  <script src="/assets/js/license.js?v=mu13x5um"></script>
+</body>
+</html>

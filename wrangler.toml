@@ -17,3 +17,8 @@ NOWPAYMENTS_API_BASE = "https://api.nowpayments.io/v1"
 binding = "DB"
 database_name = "ryvoki-db"
 database_id = "eb8ff80f-e317-405e-8b6b-7f48ee53f93b"
+
+# Same KV namespace the mail worker uses, so contact-form messages land in the Ryvoki Mail inbox.
+[[kv_namespaces]]
+binding = "BLOBS"
+id = "b2f5f2b07f484920894246c4629eaac5"
