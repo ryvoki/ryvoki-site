@@ -7,7 +7,8 @@
     "db:local": "wrangler d1 execute ryvoki-db --local --file=./schema.sql",
     "db:remote": "wrangler d1 execute ryvoki-db --remote --file=./schema.sql",
     "keys": "node scripts/gen-signing-key.mjs",
-    "deploy": "wrangler pages deploy public"
+    "deploy": "node scripts/stamp.mjs && wrangler pages deploy public --project-name ryvoki-site --branch main --commit-dirty=true",
+    "stamp": "node scripts/stamp.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.131.1"
