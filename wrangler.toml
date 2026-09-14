@@ -1,0 +1,18 @@
+# Cloudflare Pages project config.
+# Local dev:  npm run dev   (runs the site + API + a local copy of the database)
+# Deploy:     git push       (Cloudflare Pages builds from GitHub)  or  npm run deploy
+name = "ryvoki-site"
+compatibility_date = "2025-12-01"
+pages_build_output_dir = "public"
+
+[vars]
+# Public (non-secret) settings. Secrets live in .dev.vars locally and in the
+# Cloudflare dashboard in production (Settings -> Environment variables).
+SITE_URL = "http://localhost:8788"
+PAYMENT_PROVIDER = "nowpayments"
+NOWPAYMENTS_API_BASE = "https://api.nowpayments.io/v1"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ryvoki-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"

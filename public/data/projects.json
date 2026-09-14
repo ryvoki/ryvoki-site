@@ -1,0 +1,49 @@
+[
+  {
+    "slug": "rank-tracker",
+    "name": "Blood Strike Rank Tracker",
+    "tagline": "A live rank / RP / wins overlay for OBS. Offline, transparent, zero game hooks.",
+    "priceUsd": 4.99,
+    "status": "available",
+    "licensed": true,
+    "maxActivations": 3,
+    "version": "1.0.0",
+    "platform": ["Windows 10 / 11", "OBS Browser Source"],
+    "image": "/assets/img/rank-tracker.svg",
+    "accent": "#ff3d3d",
+    "download": "",
+    "features": [
+      "Transparent 360×90 overlay card built for an OBS Browser Source",
+      "Rank badge, ranked points and wins-today, all updated live over Server-Sent Events",
+      "Tiny native control panel: pick rank, type RP, tap +/− for wins",
+      "Auto-saves every change with crash-safe atomic writes and a backup",
+      "Runs fully offline on 127.0.0.1 — never touches the game, no accounts, no telemetry",
+      "Single self-contained EXE, no .NET install needed"
+    ],
+    "body": [
+      "I got tired of retyping my rank in a text source every time I ranked up on stream, so I built this. You keep a small control panel open next to OBS, change your rank, RP or wins, and the overlay updates instantly.",
+      "It is completely separate from Blood Strike. It does not read game memory, inject anything, or talk to any server. It is a manual tracker with a pretty face.",
+      "Your license key unlocks the app on up to 3 PCs. Payment is crypto only and your key shows up on this site the moment the payment is confirmed."
+    ],
+    "setup": [
+      "Download and unzip the folder anywhere. Keep the folder together.",
+      "Run Ryvoki Blood Strike Rank Tracker.exe and paste your license key when asked.",
+      "In OBS add a Browser Source: URL http://127.0.0.1:8787/overlay, width 360, height 90.",
+      "Change rank / RP / wins in the control panel. The overlay updates live."
+    ]
+  },
+  {
+    "slug": "coming-soon",
+    "name": "Next drop",
+    "tagline": "Something else for the Blood Strike stream setup. Follow the socials to catch it.",
+    "priceUsd": 0,
+    "status": "coming-soon",
+    "licensed": false,
+    "platform": ["Windows"],
+    "image": "",
+    "accent": "#ffb547",
+    "features": [],
+    "body": ["Not ready yet. Check back."],
+    "setup": []
+  }
+]

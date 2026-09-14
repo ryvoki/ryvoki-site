@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <title>Ryvoki — Blood Strike, streams & tools</title>
+  <meta name="description" content="Ryvoki: Blood Strike player, streamer, and the person who builds the overlays and tools for it. Socials, current rank, and crypto-only project store.">
+  <meta property="og:title" content="Ryvoki">
+  <meta property="og:description" content="Blood Strike · Streams · Software. Find me everywhere, grab my tools.">
+  <meta property="og:image" content="/assets/img/rank-tracker.svg">
+  <meta name="theme-color" content="#07080a">
+</head>
+<body>
+  <div class="bg"><div class="orb"></div></div>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="">RYVOKI</a>
+      <nav class="nav-links">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/projects/" data-nav="projects">Projects</a>
+        <a href="/license/" data-nav="license">License</a>
+        <a class="btn btn-sm btn-primary" href="#" data-nav-discord target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </header>
+  <script>document.querySelector('[data-nav="home"]').setAttribute("aria-current","page")</script>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="eyebrow" data-site="eyebrow">BLOOD STRIKE • STREAMS • SOFTWARE</span>
+        <h1 class="hero-title" data-hero-title>RYVOKI</h1>
+        <p class="hero-tag" data-site="tagline">Blood Strike grinder. I build the tools I wish existed.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/projects/">See my projects</a>
+          <a class="btn" href="#" data-primary-cta target="_blank" rel="noopener">Join the Discord</a>
+        </div>
+        <div class="socials" data-socials aria-label="Social links"></div>
+      </div>
+      <aside class="card idcard" data-idcard aria-label="Player card"></aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Latest drop</span>
+          <h2 style="margin-top:10px">Built for the stream.</h2>
+        </div>
+        <a class="btn" href="/projects/">All projects</a>
+      </div>
+      <div class="card reveal" data-featured></div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="grid">
+        <div class="card card-pad reveal">
+          <span class="eyebrow">Who</span>
+          <h3 style="margin:12px 0 8px">This is me.</h3>
+          <p class="muted" style="margin:0" data-site="bio">Ranked all season, streaming the climb, and shipping small Windows tools for streamers along the way.</p>
+        </div>
+        <div class="card card-pad reveal">
+          <span class="eyebrow">How buying works</span>
+          <h3 style="margin:12px 0 8px">Crypto in, key out.</h3>
+          <p class="muted" style="margin:0">Pick a project, pay the invoice in whatever coin you like, and your license key appears on this site the moment the network confirms. No accounts, no cards.</p>
+        </div>
+        <div class="card card-pad reveal">
+          <span class="eyebrow">Support</span>
+          <h3 style="margin:12px 0 8px">Lost a key?</h3>
+          <p class="muted" style="margin:0">Every key can be recovered with your order ID or email on the <a href="/license/" style="text-decoration:underline">license page</a>. Anything else, <a data-discord-link style="text-decoration:underline">hit me on Discord</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span data-year></span> Ryvoki · <span data-footer-note></span></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="muted" style="margin-right:4px">Pay with</span><span data-crypto style="display:contents"></span></div>
+    </div>
+  </footer>
+  <script>document.querySelector("[data-year]").textContent=new Date().getFullYear();</script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/store.js"></script>
+</body>
+</html>

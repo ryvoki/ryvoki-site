@@ -1,0 +1,26 @@
+{
+  "handle": "RYVOKI",
+  "name": "Ryvoki",
+  "eyebrow": "BLOOD STRIKE  •  STREAMS  •  SOFTWARE",
+  "tagline": "Blood Strike grinder. I build the tools I wish existed, then I give you the keys.",
+  "bio": "Ranked all season, streaming the climb, and shipping small Windows tools for streamers along the way. Everything I sell is bought with crypto and delivered instantly with a license key.",
+  "avatar": "",
+  "statusLabel": "GRINDING",
+  "bloodstrike": {
+    "uid": "",
+    "region": "ASIA"
+  },
+  "socials": [
+    { "id": "youtube",   "label": "YouTube",   "url": "https://www.youtube.com/@Ryvoki" },
+    { "id": "twitch",    "label": "Twitch",    "url": "https://www.twitch.tv/ryvoki" },
+    { "id": "x",         "label": "X",         "url": "https://x.com/kingryvoki" },
+    { "id": "instagram", "label": "Instagram", "url": "https://www.instagram.com/kingryvoki/" },
+    { "id": "tiktok",    "label": "TikTok",    "url": "" },
+    { "id": "kick",      "label": "Kick",      "url": "" },
+    { "id": "discord",   "label": "Discord",   "url": "https://discord.gg/UmVwwgrDmH" },
+    { "id": "github",    "label": "GitHub",    "url": "" }
+  ],
+  "primaryCta": { "label": "Watch on Twitch", "url": "https://www.twitch.tv/ryvoki" },
+  "cryptoAccepted": ["BTC", "ETH", "SOL", "LTC", "USDT", "USDC", "+300 more"],
+  "footerNote": "Not affiliated with NetEase or Blood Strike."
+}
