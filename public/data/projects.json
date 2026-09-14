@@ -8,10 +8,13 @@
     "licensed": true,
     "maxActivations": 3,
     "version": "1.0.0",
-    "platform": ["Windows 10 / 11", "OBS Browser Source"],
+    "platform": [
+      "Windows 10 / 11",
+      "OBS Browser Source"
+    ],
     "image": "/assets/img/rank-tracker.svg",
     "accent": "#ff3d3d",
-    "download": "",
+    "download": "https://github.com/ryvoki/ryvoki-site/releases/download/v1.0.0/Ryvoki-Blood-Strike-Rank-Tracker-v1.0.0-win-x64.zip",
     "features": [
       "Transparent 360×90 overlay card built for an OBS Browser Source",
       "Rank badge, ranked points and wins-today, all updated live over Server-Sent Events",
@@ -39,11 +42,15 @@
     "priceUsd": 0,
     "status": "coming-soon",
     "licensed": false,
-    "platform": ["Windows"],
+    "platform": [
+      "Windows"
+    ],
     "image": "",
     "accent": "#ffb547",
     "features": [],
-    "body": ["Not ready yet. Check back."],
+    "body": [
+      "Not ready yet. Check back."
+    ],
     "setup": []
   }
 ]
