@@ -16,4 +16,4 @@ NOWPAYMENTS_API_BASE = "https://api.nowpayments.io/v1"
 [[d1_databases]]
 binding = "DB"
 database_name = "ryvoki-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "eb8ff80f-e317-405e-8b6b-7f48ee53f93b"
