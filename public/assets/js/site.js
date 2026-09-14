@@ -1,4 +1,4 @@
-/* Shared site runtime: loads /data/site.json, renders socials + ID card, effects. */
+/* Shared site runtime: loads /data/site.json, renders socials, effects. */
 (() => {
   "use strict";
 
@@ -102,31 +102,6 @@
     }
   }
 
-  function renderIdCard(root, site) {
-    const bs = site.bloodstrike || {};
-    const initials = (site.handle || "R").slice(0, 1).toUpperCase();
-    const social = (id) => (site.socials || []).find(s => s.id === id && s.url);
-    const twitch = social("twitch"), youtube = social("youtube");
-    root.innerHTML = `
-      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      <div class="idcard-head">
-        <div class="avatar">${site.avatar ? `<img src="${site.avatar}" alt="">` : `<div>${initials}</div>`}</div>
-        <div>
-          <div class="idcard-name">${site.handle || ""}</div>
-          <div class="idcard-sub">Player · Streamer · Dev</div>
-        </div>
-        <div style="margin-left:auto"><span class="live">${site.statusLabel || "GRINDING"}</span></div>
-      </div>
-      <div class="kv">
-        <div class="kv-row"><span class="k">GAME</span><span class="v">Blood Strike</span></div>
-        ${bs.uid ? `<div class="kv-row"><span class="k">UID</span><span class="v"><span data-uid>${bs.uid}</span><button class="copy" data-copy-uid>COPY</button></span></div>` : ""}
-        ${bs.region ? `<div class="kv-row"><span class="k">REGION</span><span class="v">${bs.region}</span></div>` : ""}
-        ${twitch ? `<div class="kv-row"><span class="k">LIVE ON</span><span class="v"><a href="${twitch.url}" target="_blank" rel="noopener" style="color:#c9a6ff">${twitch.url.replace(/^https?:\/\/(www\.)?/, "")}</a></span></div>` : ""}
-        ${youtube ? `<div class="kv-row"><span class="k">VIDEOS</span><span class="v"><a href="${youtube.url}" target="_blank" rel="noopener" style="color:#ff8a8a">${youtube.url.replace(/^https?:\/\/(www\.)?/, "")}</a></span></div>` : ""}
-      </div>`;
-    const btn = $("[data-copy-uid]", root);
-    if (btn) btn.addEventListener("click", () => copy(bs.uid, "UID copied"));
-  }
 
   function renderFooter(site) {
     const f = $("[data-footer-note]");
@@ -147,7 +122,6 @@
     document.querySelectorAll("[data-site]").forEach(n => { const k = n.dataset.site; if (site[k]) n.textContent = site[k]; });
     const t = $("[data-hero-title]"); if (t) { t.textContent = site.handle || t.textContent; splitTitle(t); }
     const s = $("[data-socials]"); if (s) renderSocials(s, site);
-    const id = $("[data-idcard]"); if (id) renderIdCard(id, site);
     const cta = $("[data-primary-cta]");
     if (cta) { if (site.primaryCta?.url) { cta.href = site.primaryCta.url; cta.textContent = site.primaryCta.label || cta.textContent; } else cta.remove(); }
     const discord = (site.socials || []).find(x => x.id === "discord" && x.url);

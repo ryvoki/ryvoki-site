@@ -1,5 +1,45 @@
 [
   {
+    "slug": "mythic-course",
+    "name": "Mythic Course + 1-on-1 Coaching",
+    "tagline": "Any rank to Mythic, guaranteed. Full video course, homework that moves your rank, and a personal 1-on-1 with Ryvoki.",
+    "priceUsd": 30,
+    "status": "available",
+    "licensed": true,
+    "maxActivations": 1,
+    "version": "1.0",
+    "platform": [
+      "PC",
+      "Mobile",
+      "Any rank"
+    ],
+    "image": "/assets/img/course/card.png",
+    "accent": "#ffb547",
+    "page": "/course/",
+    "access": "/learn/",
+    "download": "",
+    "features": [
+      "8 modules from setup to the Mythic push, beginner to advanced",
+      "Reading, drills and homework with every lesson, not just videos",
+      "A training plan built from your intake: platform, rank, confidence, how often you play",
+      "1-on-1 call with Ryvoki when you finish: he watches you play and hands you a personal fix-list",
+      "Private students channel in the Discord",
+      "Mythic guaranteed: coaching continues until you get there"
+    ],
+    "body": [
+      "This is the exact process I use to climb every season, turned into a course you can actually finish. Eight modules, short lessons, and after every lesson you get homework that goes straight into your ranked games.",
+      "You start with an intake: platform, current rank, how confident you are with aim and movement, and how often you can train. The course builds a plan around that so you always know what to do next.",
+      "When you complete the course you book a 1-on-1 call. I watch you play and give you a personal plan of the three things that will move your rank fastest."
+    ],
+    "setup": [
+      "Buy the course. Your license key appears on this site the moment payment confirms.",
+      "Go to ryvoki.com/learn and log in with your key.",
+      "Answer the intake questions once. Your plan is built from them.",
+      "Work through the lessons and do the homework in ranked.",
+      "Finish the course, book your 1-on-1, get your personal fix-list."
+    ]
+  },
+  {
     "slug": "rank-tracker",
     "name": "Blood Strike Rank Tracker",
     "tagline": "A live rank / RP / wins overlay for OBS. Offline, transparent, zero game hooks.",

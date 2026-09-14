@@ -15,7 +15,7 @@
     </div>`;
 
   function card(p) {
-    const href = p.status === "coming-soon" ? "#" : `/p/${p.slug}`;
+    const href = p.status === "coming-soon" ? "#" : (p.page || `/p/${p.slug}`);
     const a = el("a", { class: "card pcard reveal", href, html: `
       ${media(p)}
       <div class="pbody">
@@ -24,7 +24,7 @@
         <div class="tags">${(p.platform || []).map(t => `<span class="tag">${t}</span>`).join("")}</div>
         <div class="pmeta">
           <span class="price">${fmtPrice(p.priceUsd)}${p.priceUsd ? "<small>USD in crypto</small>" : ""}</span>
-          <span class="btn btn-sm ${p.status === "coming-soon" ? "" : "btn-primary"}">${p.status === "coming-soon" ? "Soon" : (p.priceUsd ? "Get it" : "Download")}</span>
+          <span class="btn btn-sm ${p.status === "coming-soon" ? "" : "btn-primary"}">${p.status === "coming-soon" ? "Soon" : (p.page ? "Enroll" : p.priceUsd ? "Get it" : "Download")}</span>
         </div>
       </div>` });
     if (p.status === "coming-soon") a.addEventListener("click", e => { e.preventDefault(); toast("Not out yet — follow the socials"); });
@@ -41,7 +41,7 @@
 
   async function renderFeatured(root) {
     const projects = await loadProjects();
-    const p = projects.find(x => x.status === "available") || projects[0];
+    const p = projects.find(x => x.status === "available" && !x.page) || projects.find(x => x.status === "available") || projects[0];
     if (!p) return;
     root.innerHTML = `
       <div class="feature">
@@ -84,11 +84,13 @@
           <div class="tags">${(p.platform || []).map(t => `<span class="tag">${t}</span>`).join("")}</div>
           ${cancelled ? '<div class="notice">Checkout cancelled. No charge.</div>' : ""}
           <div data-buy></div>
-          ${p.licensed ? `<p class="muted" style="font-size:13px;margin:4px 0 0">License key delivered on this site the moment payment confirms. Works on up to ${p.maxActivations || 3} PCs. <a href="/license/" style="text-decoration:underline">Lost your key?</a></p>` : ""}
+          ${p.access ? `<p class="muted" style="font-size:13px;margin:4px 0 0">Your license key is your login at <a href="${p.access}" style="text-decoration:underline">ryvoki.com${p.access}</a>. It shows up here the moment payment confirms. <a href="/license/" style="text-decoration:underline">Lost it?</a></p>`
+            : p.licensed ? `<p class="muted" style="font-size:13px;margin:4px 0 0">License key delivered on this site the moment payment confirms. Works on up to ${p.maxActivations || 3} PCs. <a href="/license/" style="text-decoration:underline">Lost your key?</a></p>` : ""}
+          ${p.page ? `<a class="btn btn-sm" href="${p.page}">Full course page</a>` : ""}
           <p class="muted" style="font-size:13px;margin:0" data-support></p>
         </aside>
       </div>`;
-    window.Ryvoki.discordUrl().then(url => { const s = $("[data-support]", root); if (s && url) s.innerHTML = `Problems, questions, refunds: <a href="${url}" target="_blank" rel="noopener" style="text-decoration:underline">join the Discord</a>.`; });
+    window.Ryvoki.discordUrl().then(url => { const s = $("[data-support]", root); if (s && url) s.innerHTML = `Problems, questions, refunds, or you'd rather not pay in crypto: <a href="${url}" target="_blank" rel="noopener" style="text-decoration:underline">open a ticket in the Discord</a>.`; });
     const buy = $("[data-buy]", root);
     if (p.status === "coming-soon") { buy.innerHTML = '<button class="btn" disabled>Not released yet</button>'; return; }
     if (!p.priceUsd) {

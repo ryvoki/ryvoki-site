@@ -2,7 +2,7 @@ import type { Env } from "./types";
 
 export interface Product {
   slug: string; name: string; tagline?: string; priceUsd: number; status: "available" | "coming-soon" | string;
-  licensed?: boolean; maxActivations?: number; download?: string; version?: string;
+  licensed?: boolean; maxActivations?: number; download?: string; version?: string; page?: string; access?: string;
 }
 
 /** Reads public/data/projects.json through the static asset binding, so prices can't be tampered with client-side. */

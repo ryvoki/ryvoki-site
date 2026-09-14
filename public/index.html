@@ -8,11 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site.css?v=mu13x5um">
+  <link rel="stylesheet" href="/assets/css/site.css?v=mu1aajpv">
+  <link rel="stylesheet" href="/assets/css/course.css?v=mu1aajpv">
   <title>Ryvoki — Blood Strike, streams & tools</title>
-  <meta name="description" content="Ryvoki: Blood Strike player, streamer, and the person who builds the overlays and tools for it. Socials, current rank, and crypto-only project store.">
+  <meta name="description" content="Ryvoki: Blood Strike player, streamer, and coach. 1-on-1 coaching and a full course to Mythic, plus the tools I build for the stream.">
   <meta property="og:title" content="Ryvoki">
-  <meta property="og:description" content="Blood Strike · Streams · Software. Find me everywhere, grab my tools.">
+  <meta property="og:description" content="Blood Strike · Coaching · Software. Any rank to Mythic, guaranteed.">
   <meta property="og:image" content="https://ryvoki.com/assets/img/brand/og.png">
   <meta property="og:url" content="https://ryvoki.com/">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,6 +27,7 @@
       <a class="brand" href="/" aria-label="Ryvoki home"><img class="brand-mark" src="/assets/img/brand/mark.png" alt="Ryvoki"></a>
       <nav class="nav-links">
         <a href="/" data-nav="home">Home</a>
+        <a href="/course/" data-nav="course">Course</a>
         <a href="/projects/" data-nav="projects">Projects</a>
         <a href="/license/" data-nav="license">License</a>
         <a href="/contact/" data-nav="contact">Contact</a>
@@ -47,13 +49,29 @@
         </div>
         <div class="socials" data-socials aria-label="Social links"></div>
       </div>
-      <aside class="card idcard" data-idcard aria-label="Player card"></aside>
+      <aside class="card idcard coach reveal in" aria-label="1-on-1 coaching">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span class="eyebrow">1-on-1 coaching</span><span class="guarantee">Mythic guaranteed</span></div>
+        <div class="coach-badges"><img src="/assets/img/rank-master.png" alt="Master"><span class="arrow">&rarr;</span><img src="/assets/img/rank-legend.png" alt="Legend"><span class="arrow">&rarr;</span><img src="/assets/img/rank-mythic.png" alt="Mythic"></div>
+        <div class="coach-title"><span>Any rank to Mythic.</span><span class="grad-text">Course + coaching.</span></div>
+        <ul class="coach-list">
+          <li>8 modules, beginner to advanced, with homework that goes into your ranked games</li>
+          <li>A training plan built from your intake: platform, rank, confidence, how often you play</li>
+          <li>Finish it and I watch you play on a 1-on-1 call and hand you a personal fix-list</li>
+        </ul>
+        <div class="coach-price">$30 <small>one-time · PC &amp; mobile</small></div>
+        <div class="coach-actions">
+          <a class="btn btn-primary" href="/course/">Register for coaching</a>
+          <a class="btn" href="/learn/">Already enrolled? Log in</a>
+        </div>
+        <div class="coach-foot">Crypto checkout. Prefer another way? <a data-discord-link>Open a ticket in the Discord</a>.</div>
+      </aside>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
         <div>
-          <span class="eyebrow">Latest drop</span>
+          <span class="eyebrow">Latest tool</span>
           <h2 style="margin-top:10px">Built for the stream.</h2>
         </div>
         <a class="btn" href="/projects/">All projects</a>
@@ -71,7 +89,7 @@
         <div class="card card-pad reveal">
           <span class="eyebrow">How buying works</span>
           <h3 style="margin:12px 0 8px">Crypto in, key out.</h3>
-          <p class="muted" style="margin:0">Pick a project, pay the invoice in whatever coin you like, and your license key appears on this site the moment the network confirms. No accounts, no cards.</p>
+          <p class="muted" style="margin:0">Pick a project, pay the invoice in whatever coin you like, and your license key appears on this site the moment the network confirms. No accounts, no cards. Don't want to pay in crypto? <a data-discord-link style="text-decoration:underline">Open a ticket in the Discord</a>.</p>
         </div>
         <div class="card card-pad reveal">
           <span class="eyebrow">Support</span>
@@ -89,7 +107,7 @@
     </div>
   </footer>
   <script>document.querySelector("[data-year]").textContent=new Date().getFullYear();</script>
-  <script src="/assets/js/site.js?v=mu13x5um"></script>
-  <script src="/assets/js/store.js?v=mu13x5um"></script>
+  <script src="/assets/js/site.js?v=mu1aajpv"></script>
+  <script src="/assets/js/store.js?v=mu1aajpv"></script>
 </body>
 </html>

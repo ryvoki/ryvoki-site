@@ -8,9 +8,15 @@ export interface D1PreparedStatement {
   all<T = unknown>(): Promise<D1Result<T>>;
 }
 export interface D1Database { prepare(query: string): D1PreparedStatement; batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]> }
+export interface KVNamespace {
+  get(key: string): Promise<string | null>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
+  delete(key: string): Promise<void>;
+}
 
 export interface Env {
   DB: D1Database;
+  BLOBS?: KVNamespace;
   ASSETS: { fetch(input: string | Request): Promise<Response> };
   SITE_URL?: string;
   PAYMENT_PROVIDER?: string;

@@ -18,6 +18,7 @@
   loadProjects().then(p => projects = p).catch(() => {});
   const productName = (slug) => projects.find(p => p.slug === slug)?.name || slug;
   const productDownload = (slug) => projects.find(p => p.slug === slug)?.download || "";
+  const productAccess = (slug) => projects.find(p => p.slug === slug)?.access || "";
 
   async function tick() {
     let data;
@@ -28,7 +29,7 @@
     }
     const o = data.order;
     if (o.status === "paid" && o.key) {
-      const dl = productDownload(o.product);
+      const dl = productDownload(o.product), access = productAccess(o.product);
       view(`<div class="status-hero">
         <div class="check">✓</div>
         <div class="big">Paid. Here's your key.</div>
@@ -36,8 +37,8 @@
         <div class="keybox"><span data-key>${o.key}</span><button class="copy" data-copy>COPY</button></div>
         <p class="muted" style="font-size:14px">Save this somewhere. You can always get it back on the <a href="/license/" style="text-decoration:underline">license page</a> with your order ID${o.emailHint ? " or your email" : ""}.</p>
         <div class="hero-actions" style="justify-content:center;margin-top:18px">
-          ${dl ? `<a class="btn btn-primary" href="${dl}">Download ${productName(o.product)}</a>` : `<span class="notice">Download link is on the project page.</span>`}
-          <a class="btn" href="/p/${o.product}">Setup instructions</a>
+          ${access ? `<a class="btn btn-primary" href="${access}">Open the course and log in</a>` : dl ? `<a class="btn btn-primary" href="${dl}">Download ${productName(o.product)}</a>` : `<span class="notice">Download link is on the project page.</span>`}
+          ${access ? "" : `<a class="btn" href="/p/${o.product}">Setup instructions</a>`}
         </div>
       </div>`);
       $("[data-copy]", root).addEventListener("click", () => copy(o.key, "Key copied"));

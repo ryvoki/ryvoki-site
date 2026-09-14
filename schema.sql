@@ -52,3 +52,32 @@ CREATE TABLE IF NOT EXISTS webhook_log (
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_email ON orders(email);
 CREATE INDEX IF NOT EXISTS idx_licenses_product ON licenses(product);
+
+-- Mythic course portal (ryvoki.com/learn)
+CREATE TABLE IF NOT EXISTS course_profiles (
+  license_id  INTEGER PRIMARY KEY REFERENCES licenses(id),
+  answers     TEXT NOT NULL DEFAULT '{}',   -- JSON of intake answers
+  plan        TEXT,                          -- JSON training plan derived from answers
+  completed   INTEGER NOT NULL DEFAULT 0,    -- intake finished
+  created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+  updated_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+
+CREATE TABLE IF NOT EXISTS course_progress (
+  license_id    INTEGER NOT NULL REFERENCES licenses(id),
+  lesson_id     TEXT NOT NULL,
+  completed_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+  note          TEXT,
+  PRIMARY KEY (license_id, lesson_id)
+);
+
+CREATE TABLE IF NOT EXISTS course_calls (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  license_id   INTEGER NOT NULL REFERENCES licenses(id),
+  discord      TEXT,
+  timezone     TEXT,
+  availability TEXT,
+  notes        TEXT,
+  status       TEXT NOT NULL DEFAULT 'requested', -- requested | scheduled | done
+  created_at   TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);

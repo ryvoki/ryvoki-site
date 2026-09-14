@@ -27,9 +27,9 @@ export const onRequestPost = async ({ request, env }: Ctx) => {
     invoice = await createInvoice(env, {
       orderId,
       priceUsd: product.priceUsd,
-      description: `${product.name} license`,
+      description: product.page ? product.name : `${product.name} license`,
       successUrl: `${site}/order/?id=${orderId}`,
-      cancelUrl: `${site}/p/${product.slug}?cancelled=1`,
+      cancelUrl: `${site}${product.page || `/p/${product.slug}`}?cancelled=1`,
       ipnUrl: `${site}/api/ipn`,
     });
   } catch (e) {

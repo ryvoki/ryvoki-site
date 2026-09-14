@@ -9,7 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/site.css?v=mu1aajpv">
-  <title>License — Ryvoki</title>
+  <link rel="stylesheet" href="/assets/css/course.css?v=mu1aajpv">
+  <title>Student portal — Ryvoki</title>
+  <meta name="description" content="Log in with your course key to access the Mythic course lessons, your training plan and your 1-on-1 booking.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080a">
 </head>
 <body>
   <div class="bg"><div class="orb"></div></div>
@@ -26,30 +30,22 @@
       </nav>
     </div>
   </header>
-  <script>document.querySelector('[data-nav="license"]').setAttribute("aria-current","page")</script>
+  <script>document.querySelector('[data-nav="course"]').setAttribute("aria-current","page")</script>
+
   <main class="wrap">
-    <div class="narrow">
-      <span class="eyebrow">License</span>
-      <h2 style="margin:10px 0 8px">Find or check a key.</h2>
-      <p class="muted" style="margin-bottom:22px">Paste your <b>order ID</b> (ORD-…) or the <b>email</b> you used to get your key back. Paste a <b>key</b> (RYV-…) to see whether it's active and how many PCs it's on.</p>
-      <form class="card card-pad" data-lookup>
-        <div class="form-row">
-          <input class="input mono" id="q" placeholder="ORD-XXXXXXXX  ·  you@example.com  ·  RYV-XXXXX-XXXXX-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
-          <button class="btn btn-primary" type="submit">Look up</button>
-        </div>
-      </form>
-      <div style="height:18px"></div>
-      <div data-lookup-out></div>
+    <div class="learn" data-learn>
+      <div class="status-hero"><div class="spinner"></div><p class="muted">Loading your course…</p></div>
     </div>
   </main>
+
   <footer>
     <div class="wrap">
       <div class="foot-brand"><img src="/assets/img/brand/mark.png" alt=""><span>© <span data-year></span> Ryvoki · <span data-footer-note></span></span></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="muted" style="margin-right:4px">Pay with</span><span data-crypto style="display:contents"></span></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="muted">Stuck? <a data-discord-link style="text-decoration:underline">Ask in the students channel</a>.</span></div>
     </div>
   </footer>
   <script>document.querySelector("[data-year]").textContent=new Date().getFullYear();</script>
   <script src="/assets/js/site.js?v=mu1aajpv"></script>
-  <script src="/assets/js/license.js?v=mu1aajpv"></script>
+  <script src="/assets/js/learn.js?v=mu1aajpv"></script>
 </body>
 </html>
