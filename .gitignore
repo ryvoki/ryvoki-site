@@ -5,3 +5,4 @@ node_modules/
 .DS_Store
 Thumbs.db
 signing-key.private.json
+admin-token.txt
