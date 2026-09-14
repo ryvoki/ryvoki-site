@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Ryvoki.Mail;
 
@@ -21,8 +22,11 @@ public sealed class Settings
     public int WindowWidth { get; set; } = 1240;
     public int WindowHeight { get; set; } = 780;
 
+    [JsonIgnore]
     public bool IsConfigured => !string.IsNullOrWhiteSpace(ServerUrl) && !string.IsNullOrWhiteSpace(TokenProtected);
 
+    /// <summary>Decrypted on demand; never written to disk (only TokenProtected is).</summary>
+    [JsonIgnore]
     public string Token
     {
         get
@@ -46,6 +50,9 @@ public sealed class Settings
         }
     }
 
+    public static string LoadError { get; private set; } = "";
+    public static string Location => FilePath;
+
     public static Settings Load()
     {
         try
@@ -54,10 +61,12 @@ public sealed class Settings
             {
                 return JsonSerializer.Deserialize<Settings>(File.ReadAllText(FilePath), Json) ?? new Settings();
             }
+            LoadError = "no settings file";
         }
-        catch
+        catch (Exception exception)
         {
             // Unreadable settings: start fresh, the setup screen will ask again.
+            LoadError = exception.Message;
         }
         return new Settings();
     }

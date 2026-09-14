@@ -21,6 +21,15 @@ internal static class Program
             return;
         }
 
+        // Diagnostics: "--print-settings" reports what the app finds at startup, without opening a window.
+        if (Array.IndexOf(args, "--print-settings") >= 0)
+        {
+            var s = Settings.Load();
+            var report = $"file: {Settings.Location}\nexists: {File.Exists(Settings.Location)}\nload error: {(Settings.LoadError == "" ? "none" : Settings.LoadError)}\nserver: {s.ServerUrl}\nconfigured: {s.IsConfigured}\ntoken decrypts: {(s.Token.Length > 0 ? "yes (" + s.Token.Length + " chars)" : "NO")}";
+            File.WriteAllText(Path.Combine(Path.GetTempPath(), "ryvoki-mail-settings-check.txt"), report);
+            return;
+        }
+
         using var singleInstance = new Mutex(initiallyOwned: true, name: @"Local\RyvokiMail", createdNew: out var isFirst);
         if (!isFirst)
         {
