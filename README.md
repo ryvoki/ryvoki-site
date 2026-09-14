@@ -54,20 +54,17 @@ Edit, save, refresh. No build.
    git push -u origin main
    ```
 
-### 2. Cloudflare Pages
-1. Create a Cloudflare account. Dashboard -> **Workers & Pages** -> **Create** -> **Pages** -> **Connect to Git** -> pick `ryvoki-site`.
-2. Build settings: framework **None**, build command **empty**, build output directory **`public`**. Deploy.
-3. You now have `ryvoki-site.pages.dev`. It works, but payments are off until step 4.
+### 2. Cloudflare Pages (already done, here for reference)
+The project `ryvoki-site` is deployed by **direct upload**, not by watching GitHub. After any change:
+```powershell
+git add . ; git commit -m "what changed" ; git push     # keeps GitHub as the backup copy
+npm run deploy                                          # puts it live at ryvoki.com in ~10 seconds
+```
+`npx wrangler login` once per PC before the first deploy.
 
-### 3. Database (D1)
-1. Dashboard -> **Storage & Databases** -> **D1** -> **Create** -> name `ryvoki-db`. Copy the **Database ID**.
-2. Paste it into `wrangler.toml` where it says `REPLACE_WITH_YOUR_D1_DATABASE_ID`, commit, push.
-3. Create the tables in production (one time):
-   ```powershell
-   npx wrangler login
-   npm run db:remote
-   ```
-4. In the Pages project -> **Settings** -> **Bindings** -> add **D1 database**, variable name `DB`, database `ryvoki-db`. (The wrangler.toml usually does this automatically; check it is there.)
+### 3. Database (D1) (already done)
+`ryvoki-db` exists and its ID is in `wrangler.toml`. If the tables ever need re-creating: `npm run db:remote`.
+Secrets are uploaded with `set-secrets.ps1` (see the comment at the top of that file).
 
 ### 4. Payments (NOWPayments)
 1. Sign up at nowpayments.io. Add your **payout wallet** (the coin you want to receive; auto-convert is optional).
