@@ -225,7 +225,7 @@ export const LESSONS: Lesson[] = [
 <li><strong>Top 10:</strong> position over everything. High ground, cover, edge of zone.</li>
 <li><strong>Top 3:</strong> now you fight. You've banked the placement; the kills are pure profit.</li>
 </ul>
-<h3>Solo, duo, squad</h3>
+<h3>Solo or squad</h3>
 <p>Solo rewards patience most. Squads reward communication and playing together; a squad that stays within thirty metres of each other wins most engagements by numbers alone. If you queue with randoms, be the one who calls the rotation early. Someone has to.</p>`,
     keyPoints: ["Placement is the floor, kills are the bonus.", "First goal every game: don't finish in the bottom half.", "Top 3 is when you fight. Before that, fight only when it's free."],
     homework: { title: "Placement-first week", steps: ["10 ranked games played by phase: loot, rotate early, free fights only, fight in top 3.", "Track your placement each game. Target: average top 8.", "Note your RP at the start and end of the week."], target: "Average top-8 placement across 10 games" },

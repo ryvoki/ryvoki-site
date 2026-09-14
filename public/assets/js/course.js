@@ -15,7 +15,7 @@
       const card = document.createElement("div");
       card.className = "card module reveal";
       card.innerHTML = `
-        <div class="pmedia"><img src="${m.image}" alt="Module ${m.number}: ${m.title}" loading="lazy"><span class="badge"><span class="tag tag-ember">Module ${String(m.number).padStart(2, "0")}</span></span></div>
+        <div class="pmedia"><img src="${m.image}" alt="Module ${m.number}: ${m.title}" loading="lazy"></div>
         <div class="pbody">
           <h3>${m.title}</h3>
           <div class="tagline" style="flex:0">${m.tagline}</div>

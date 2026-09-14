@@ -29,7 +29,7 @@ export const QUESTIONS: Question[] = [
     { value: "new", label: "Under 50", hint: "Still learning the basics" }, { value: "some", label: "50 to 200" }, { value: "lots", label: "200 to 500" }, { value: "veteran", label: "500+" },
   ] },
   { id: "mode", title: "What do you mostly queue?", type: "choice", required: true, options: [
-    { value: "solo", label: "Solo" }, { value: "duo", label: "Duo" }, { value: "squad", label: "Squad with randoms" }, { value: "stack", label: "Squad with friends" },
+    { value: "solo", label: "Solo" }, { value: "squad", label: "Squad with randoms" }, { value: "stack", label: "Squad with friends" },
   ] },
   { id: "aim", title: "How confident are you in your aim?", help: "1 means you lose most 1v1s at any range. 10 means aim is never why you die.", type: "scale", min: 1, max: 10, required: true },
   { id: "movement", title: "How confident are you in your movement?", help: "Slides, jumps, peeks, using cover, not getting caught in the open.", type: "scale", min: 1, max: 10, required: true },
