@@ -6,3 +6,9 @@ node_modules/
 Thumbs.db
 signing-key.private.json
 admin-token.txt
+mail-token.txt
+mail/worker/node_modules/
+mail/worker/.wrangler/
+mail/desktop/bin/
+mail/desktop/obj/
+mail/desktop/dist/

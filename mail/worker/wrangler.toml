@@ -1,0 +1,32 @@
+# Ryvoki Mail: receives every email for ryvoki.com (via Cloudflare Email Routing -> "Send to a Worker"),
+# stores it, and exposes a small authenticated API that the desktop app uses to read and send mail.
+# Deploy from this folder:  npx wrangler deploy
+name = "ryvoki-mail"
+main = "src/index.ts"
+compatibility_date = "2025-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# The API lives on its own hostname. Wrangler creates the DNS record on deploy because the zone is in this account.
+routes = [{ pattern = "mail-api.ryvoki.com", custom_domain = true }]
+
+[vars]
+MAIL_DOMAIN = "ryvoki.com"
+DEFAULT_FROM = "business@ryvoki.com"
+DEFAULT_FROM_NAME = "Ryvoki"
+# Optional: also forward a copy of every inbound mail to this address (must be a verified destination in Email Routing).
+FORWARD_TO = ""
+
+# Same database as the store. Mail uses its own tables (see schema.sql).
+[[d1_databases]]
+binding = "DB"
+database_name = "ryvoki-db"
+database_id = "eb8ff80f-e317-405e-8b6b-7f48ee53f93b"
+
+# Raw messages, parsed bodies and attachments live in KV (free: 1 GB, values up to 25 MB).
+[[kv_namespaces]]
+binding = "BLOBS"
+id = "b2f5f2b07f484920894246c4629eaac5"
+
+# Secrets (set with `npx wrangler secret put NAME` from this folder):
+#   MAIL_TOKEN      - long random string; the desktop app sends it as a Bearer token
+#   RESEND_API_KEY  - from resend.com after verifying the ryvoki.com domain there
