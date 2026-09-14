@@ -8,7 +8,8 @@ pages_build_output_dir = "public"
 [vars]
 # Public (non-secret) settings. Secrets live in .dev.vars locally and in the
 # Cloudflare dashboard in production (Settings -> Environment variables).
-SITE_URL = "http://localhost:8788"
+# SITE_URL is intentionally not set: the API uses the address the request came in on,
+# so localhost, the .pages.dev address and the custom domain all just work.
 PAYMENT_PROVIDER = "nowpayments"
 NOWPAYMENTS_API_BASE = "https://api.nowpayments.io/v1"
 

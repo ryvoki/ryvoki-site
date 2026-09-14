@@ -9,7 +9,7 @@ public/                 the website (this folder is what gets deployed)
   projects/view.html    project detail page (served at /p/<slug>)
   order/index.html      "waiting for payment" -> shows the license key
   license/index.html    recover a key by order ID / email, or check a key
-  data/site.json        YOUR NAME, SOCIALS, UID, RANK  <-- edit this
+  data/site.json        YOUR NAME, SOCIALS, LINKS      <-- edit this
   data/projects.json    YOUR PRODUCTS AND PRICES        <-- edit this
   assets/               css, js, images
 functions/              Cloudflare Pages Functions (the API), TypeScript
@@ -45,7 +45,7 @@ Edit, save, refresh. No build.
 ## Go live (all free except the domain)
 
 ### 1. GitHub
-1. Create a GitHub account if you don't have one, then a new **private** repo called `ryvoki-site`.
+1. Create a GitHub account if you don't have one, then a new **public** repo called `ryvoki-site` (public so release downloads work without a login).
 2. In this folder:
    ```powershell
    git add .
@@ -77,8 +77,7 @@ Edit, save, refresh. No build.
    - `NOWPAYMENTS_API_KEY` = the API key (mark as **secret**)
    - `NOWPAYMENTS_IPN_SECRET` = the IPN secret (secret)
    - `ADMIN_TOKEN` = a long random string only you know (secret)
-   - `LICENSE_SIGNING_KEY` = the private key JSON printed by `npm run keys` (secret)
-   - `SITE_URL` = `https://ryvoki.com` (or your `.pages.dev` URL until the domain is on)
+   - `LICENSE_SIGNING_KEY` = the contents of `signing-key.private.json` (secret)
 5. Redeploy (Deployments -> Retry, or push any commit).
 6. Test with a real small purchase, or use the sandbox: NOWPayments has a separate sandbox at `api-sandbox.nowpayments.io/v1` with its own keys; set `NOWPAYMENTS_API_BASE` to that in a **Preview** environment if you want to test without real coins.
 
@@ -88,10 +87,10 @@ How a sale works: buyer clicks **Buy with crypto** -> we create an order (`ORD-X
 1. All of `ryvoki.com / .xyz / .dev / .gg / .io / .net / .app / .lol` were unregistered on 2026-09-14.
 2. Cheapest and simplest: Cloudflare dashboard -> **Domain Registration** -> **Register domain** -> `ryvoki.com` (about $10/yr at cost, no markup, renews at the same price).
 3. Pages project -> **Custom domains** -> add `ryvoki.com` and `www.ryvoki.com`. Because the domain is on Cloudflare, DNS is set up automatically. HTTPS is automatic.
-4. Set `SITE_URL` env var to `https://ryvoki.com` and redeploy.
+4. Rebuild the tracker if `LicenseConfig.DefaultServer` in the app doesn't match the domain you bought.
 
 ### 6. Downloads
-Upload the tracker zip (the `dist\win-x64` folder zipped, ~140 MB) to a **GitHub Release** on any repo (public releases are free, 2 GB per file). Paste the asset URL into `projects.json` -> `download`. The app itself asks for the license key, so the download can be public.
+Upload the tracker zip made by `package.ps1` in the tracker project (`dist\Ryvoki-Blood-Strike-Rank-Tracker-v1.0.0-win-x64.zip`, ~59 MB) to a **GitHub Release** on any repo (public releases are free, 2 GB per file). Paste the asset URL into `projects.json` -> `download`. The app itself asks for the license key, so the download can be public.
 
 ## Admin: keys and orders from your terminal
 
