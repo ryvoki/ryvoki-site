@@ -101,7 +101,7 @@ public sealed class MainForm : Form
 
         // ---- reader ----
         var reader = new Panel { Dock = DockStyle.Fill, BackColor = Theme.Window };
-        var head = new Panel { Dock = DockStyle.Top, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, BackColor = Theme.Surface, Padding = new Padding(18, 12, 18, 10) };
+        var head = new Panel { Dock = DockStyle.Top, Height = 160, BackColor = Theme.Surface, Padding = new Padding(18, 12, 18, 10) };
         _subject = new Label { Dock = DockStyle.Top, Height = 30, Font = Theme.Title, AutoEllipsis = true };
         _fromLine = new Label { Dock = DockStyle.Top, Height = 20, Font = Theme.BodyBold, AutoEllipsis = true };
         _toLine = new Label { Dock = DockStyle.Top, Height = 18, ForeColor = Theme.Muted, Font = Theme.Small, AutoEllipsis = true };
@@ -117,6 +117,8 @@ public sealed class MainForm : Form
         _images = Action("Load images", () => _ = RenderCurrentAsync(loadRemote: true));
         _raw = Action("Save .eml", () => _ = SaveRawAsync());
         foreach (var b in new[] { _reply, _replyAll, _forward, _archive, _delete, _star, _unread, _images, _raw }) _actions.Controls.Add(b);
+        // The action row wraps on narrow windows; keep the header exactly tall enough for however many rows it needs.
+        _actions.SizeChanged += (_, _) => head.Height = head.Padding.Top + 30 + 20 + 18 + 18 + _actions.Height + head.Padding.Bottom;
         head.Controls.Add(_actions);
         head.Controls.Add(_dateLine);
         head.Controls.Add(_toLine);
