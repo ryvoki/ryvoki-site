@@ -204,6 +204,12 @@
       </div>
 
       <div class="card card-pad" style="margin-bottom:18px">
+        <span class="eyebrow">Your death log</span>
+        <p style="margin:12px 0 8px;color:#d5d9df">The one habit the whole course runs on. Keep a plain note on your phone. After every ranked game, before you queue again, write <strong>one sentence</strong>: what got you killed, and what you controlled about it.</p>
+        <p class="muted" style="margin:0;font-size:14px">Examples: "I peeked with no cover." · "I pushed a fight while a third squad was audible." · "I stopped moving to reload." Every lesson's homework refers back to it, and you bring it to your 1-on-1.</p>
+      </div>
+
+      <div class="card card-pad" style="margin-bottom:18px">
         <span class="eyebrow">Lessons</span>
         ${me.modules.map(m => `
           <div class="module-head"><img src="${m.image}" alt=""><div><h3>${String(m.number).padStart(2, "0")} · ${esc(m.title)}</h3><small>${esc(m.tagline)}</small></div></div>
@@ -248,6 +254,7 @@
       <div class="module-head" style="margin-top:0"><img src="${module?.image || ""}" alt=""><div><span class="eyebrow">Module ${String(lesson.module).padStart(2, "0")} · ${esc(module?.title || "")}</span></div></div>
       <h2 style="margin:6px 0 8px">${esc(lesson.title)}</h2>
       <p class="muted" style="margin-bottom:20px">${esc(lesson.summary)} · ${lesson.minutes} min</p>
+      ${lesson.before ? `<div class="before"><span class="eyebrow">Before you watch</span><div class="reading" style="font-size:15.5px;margin-top:8px">${lesson.before}</div></div>` : ""}
       <div class="video">${embed ? `<iframe src="${embed}" title="${esc(lesson.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>` : `<div class="soon"><div><b>Video coming soon</b><span>Ryvoki is recording this one. The reading and homework below are the full lesson, so you can start now and rewatch when the video lands.</span></div></div>`}</div>
       <div style="height:26px"></div>
       <span class="eyebrow">Key points</span>

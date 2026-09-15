@@ -10,6 +10,7 @@ export interface Lesson {
   minutes: number;
   video: string | null;
   summary: string;
+  before?: string;        // HTML shown above the video: anything the student needs to know or have ready first
   reading: string;        // HTML
   keyPoints: string[];
   homework: { title: string; steps: string[]; target: string };
@@ -39,6 +40,10 @@ export const LESSONS: Lesson[] = [
   {
     id: "0-1", module: 0, title: "How this course works and what 'Mythic' really takes", minutes: 8, video: null,
     summary: "The plan, the promise, and the one habit that separates people who climb from people who grind.",
+    before: `
+<p><strong>This lesson introduces your death log.</strong> It's not an app or a spreadsheet. It's a plain note on your phone (or a Discord DM to yourself) where, after every ranked game and before you queue again, you write <em>one sentence</em>: what got you killed, and what you controlled about it.</p>
+<p>Examples: <em>"I peeked with no cover."</em> · <em>"I pushed a fight while a third squad was audible."</em> · <em>"I stopped moving to reload."</em></p>
+<p>Not "the enemy had a better gun" and not "my teammates were bad". Only the part you controlled. Every lesson's homework refers back to this log, and you'll bring it to your 1-on-1, so create the note now and keep it somewhere you'll find again.</p>`,
     reading: `
 <p>Most players who are stuck are not stuck because of one big thing. They are stuck because five small things each cost them one fight a game. This course fixes those small things in order, from the ones that pay off fastest to the ones that only matter once the basics are automatic.</p>
 <p>Here is the deal. Every lesson has three parts: a short video, a reading you can skim in two minutes, and homework. The homework is the course. Watching videos changes nothing; doing the drills in real ranked games is what moves your rank. Your plan on the dashboard tells you how many lessons a week to do based on how often you said you'd train. Stick to that pace and you'll finish on the date it shows.</p>
