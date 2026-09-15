@@ -12,3 +12,6 @@ mail/worker/.wrangler/
 mail/desktop/bin/
 mail/desktop/obj/
 mail/desktop/dist/
+tools/trailer/captures/
+tools/trailer/preview-*/
+tools/trailer/__pycache__/
