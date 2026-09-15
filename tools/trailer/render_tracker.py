@@ -60,11 +60,11 @@ def scene_hook(c, t):    # 2.5 - 7.5
     slam(c, text_layer("LIVE.", f, WHITE, gradient=True), W / 2, H / 2 + 160, t, 1.4, glow=44, gradient_glow=EMBER2)
     fade_up(c, text_layer("Stop retyping a text source every time you rank up.", font("body", 42, 500), MUTED), W / 2, H / 2 + 330, t, 2.4, dur=0.5, rise=24)
 
-def draw_stream_mock(c, t, z, pivot):
+def draw_stream_mock(c, t, z, pivot, anchor=None):
     """A stylised stream layout (no gameplay): scene frame, cam box, chat, LIVE pill, and the real overlay top-left.
-    z = zoom factor about `pivot` (screen point that stays fixed)."""
-    px, py = pivot
-    def T(x, y): return (px + (x - px) * z, py + (y - py) * z)
+    z = zoom factor about `pivot` (a scene point); `anchor` is where that point lands on screen (defaults to itself)."""
+    px, py = pivot; ax_, ay_ = anchor or pivot
+    def T(x, y): return (ax_ + (x - px) * z, ay_ + (y - py) * z)
     def S(v): return v * z
     # scene frame
     fx0, fy0, fx1, fy1 = 180, 96, 1740, 972
@@ -107,17 +107,18 @@ def draw_stream_mock(c, t, z, pivot):
 
 def scene_stream(c, t):  # 7.5 - 16
     pivot = (180 + 28 + 207, 96 + 28 + 52)
-    zoom = lerp(1.0, 3.9, ease_in_out(seg(t, 2.2, 3.6)))
-    # after the push-in the scene keeps its pivot on the overlay; then we re-centre the big overlay for the live-update beat
+    prog = ease_in_out(seg(t, 2.2, 3.6))
+    zoom = lerp(1.0, 1500 / 414, prog)                                  # ends exactly at the big card's width
+    anchor = (lerp(pivot[0], W / 2, prog), lerp(pivot[1], H / 2 - 40, prog))  # and exactly at its position
     if t < 3.9:
-        draw_stream_mock(c, t, zoom, pivot)
+        draw_stream_mock(c, t, zoom, pivot, anchor)
         cap_ = text_layer("A 360×90 card in an OBS Browser Source.", font("body", 40, 500), MUTED)
         fade_up(c, cap_, W / 2, H - 70, t, 0.6, dur=0.5, rise=20, hold_until=2.4)
     else:
         # dissolve from the pushed-in scene to a clean, centred big overlay
         mix = seg(t, 3.9, 4.4)
         if mix < 1:
-            draw_stream_mock(c, t, 3.9, pivot)
+            draw_stream_mock(c, t, 1500 / 414, pivot, (W / 2, H / 2 - 40))
             c.alpha_composite(Image.new("RGBA", (W, H), (7, 8, 10, int(255 * mix))))
         key = "master-4350-7" if t < 6.0 else ("master-4350-8" if t < 7.4 else "master-4410-8")
         rect = overlay(c, key, W / 2, H / 2 - 40, 1500, alpha=max(mix, 0.001), glow=0.45)
