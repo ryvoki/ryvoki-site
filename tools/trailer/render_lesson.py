@@ -42,8 +42,21 @@ def build_audio(spec, work):
     cut = np.concatenate(parts)
     raw_path = os.path.join(work, "cut_raw.wav"); clean_path = os.path.join(work, "cut_clean.wav")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ac", "2", "-ar", str(sr), "-i", "-", raw_path], input=cut.tobytes(), check=True)
-    # voice chain: rumble cut, gentle noise reduction, de-esser-ish tilt, compression, broadcast loudness
-    chain = "highpass=f=80,afftdn=nf=-28:nr=12,acompressor=threshold=-20dB:ratio=3:attack=8:release=120:makeup=4,loudnorm=I=-16:TP=-1.5:LRA=9"
+    # "premium" voice chain: rumble cut, noise reduction, broadcast EQ (warmth, boxiness cut, clarity, presence, air),
+    # de-esser, two-stage compression (slow body + fast glue), then true-peak-safe loudness normalisation.
+    chain = ",".join([
+        "highpass=f=85:p=2",
+        "afftdn=nf=-32:nr=10",
+        "equalizer=f=150:width_type=q:w=1.0:g=2.0",
+        "equalizer=f=380:width_type=q:w=1.4:g=-2.5",
+        "equalizer=f=2800:width_type=q:w=1.2:g=2.0",
+        "equalizer=f=5000:width_type=q:w=1.2:g=1.5",
+        "highshelf=f=9000:g=1.5",
+        "deesser=i=0.3:m=0.5:f=0.6",
+        "acompressor=threshold=-24dB:ratio=2.5:attack=6:release=100:makeup=3:knee=4",
+        "acompressor=threshold=-12dB:ratio=4:attack=2:release=60:makeup=2",
+        "loudnorm=I=-16:TP=-1.5:LRA=8",
+    ])
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw_path, "-af", chain, "-ar", str(sr), clean_path], check=True)
     return clean_path, len(cut) / sr
 
