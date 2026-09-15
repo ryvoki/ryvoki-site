@@ -15,3 +15,5 @@ mail/desktop/dist/
 tools/trailer/captures/
 tools/trailer/preview-*/
 tools/trailer/__pycache__/
+tools/trailer/lessons/*.wav
+tools/trailer/lessons/preview/
