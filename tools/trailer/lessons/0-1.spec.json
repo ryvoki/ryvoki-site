@@ -15,6 +15,10 @@
   ],
   [
    66.88,
+   70.93
+  ],
+  [
+   72.4,
    78.6
   ],
   [
@@ -38,7 +42,7 @@
    185.95
   ],
   [
-   190.8,
+   192.65,
    199.5
   ],
   [
@@ -55,6 +59,10 @@
   ],
   [
    249.9,
+   254.55
+  ],
+  [
+   256.2,
    263.9
   ],
   [
@@ -63,10 +71,18 @@
   ],
   [
    286.8,
+   288.6
+  ],
+  [
+   290.35,
    300.8
   ],
   [
    302.2,
+   310.4
+  ],
+  [
+   311.3,
    313.2
   ],
   [
@@ -83,6 +99,10 @@
   ],
   [
    375.4,
+   380.45
+  ],
+  [
+   384.5,
    406.4
   ],
   [
@@ -113,23 +133,23 @@
    "title": "Cold open"
   },
   {
-   "at": 61.82000000000001,
+   "at": 60.45000000000001,
    "title": "How the course works"
   },
   {
-   "at": 128.62,
+   "at": 127.25,
    "title": "The one habit"
   },
   {
-   "at": 206.36999999999998,
+   "at": 203.14999999999998,
    "title": "What Mythic actually takes"
   },
   {
-   "at": 287.87,
+   "at": 280.65,
    "title": "What happens next"
   },
   {
-   "at": 343.27000000000004,
+   "at": 332.1,
    "title": "Homework"
   }
  ],
@@ -147,55 +167,55 @@
    "gradient": false
   },
   {
-   "at": 62.01000000000002,
+   "at": 60.64000000000002,
    "text": "Video \u00b7 Reading \u00b7 Homework",
    "hold": 8,
    "gradient": false
   },
   {
-   "at": 94.92000000000002,
+   "at": 93.55000000000001,
    "text": "Don't start the next lesson until the homework is done.",
    "hold": 8,
    "gradient": false
   },
   {
-   "at": 136.4,
+   "at": 135.03,
    "text": "What got me killed?",
    "hold": 7,
    "gradient": true
   },
   {
-   "at": 151.6,
+   "at": 150.1,
    "text": "One sentence per game",
    "hold": 7,
    "gradient": false
   },
   {
-   "at": 220.64999999999995,
+   "at": 215.87999999999997,
    "text": "Lose fewer free fights. Take fewer bad fights. Survive longer.",
    "hold": 12,
    "gradient": false
   },
   {
-   "at": 262.33,
+   "at": 255.10999999999996,
    "text": "Top 3 with 2 kills beats 10 kills and an early death.",
    "hold": 9,
    "gradient": false
   },
   {
-   "at": 312.35,
+   "at": 305.13,
    "text": "8 modules \u2192 1-on-1 with Ryvoki",
    "hold": 8,
    "gradient": false
   },
   {
-   "at": 335.75000000000006,
+   "at": 324.58000000000004,
    "text": "Mythic, or the coaching continues.",
    "hold": 7,
    "gradient": true
   },
   {
-   "at": 345.72,
+   "at": 334.55,
    "text": "Start your death log \u00b7 5 games \u00b7 5 sentences",
    "hold": 10,
    "gradient": false
@@ -203,17 +223,17 @@
  ],
  "quotes": [
   {
-   "at": 144.75000000000003,
+   "at": 143.38000000000002,
    "text": "\"I peeked with no cover.\"",
    "hold": 1.5499999999999943
   },
   {
-   "at": 146.35000000000002,
+   "at": 144.98000000000002,
    "text": "\"I pushed a fight while a third squad was audible.\"",
    "hold": 3.3699999999999877
   },
   {
-   "at": 149.77,
+   "at": 148.4,
    "text": "\"I stopped moving to reload.\"",
    "hold": 2.4
   }
